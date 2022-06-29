@@ -1,70 +1,90 @@
-import React from 'react';
-import './Contact.css';
-import Slide from 'react-reveal/Slide';
-
+import React, { useRef } from "react";
+import "./Contact.css";
+import Slide from "react-reveal/Slide";
 
 const Contact = () => {
-    return (
-        <div className='mainContactForm'>
-            <Slide left>
-            <div className="containerContact">
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const numberRef = useRef();
+  const commentRef = useRef();
 
-<h1 className="brand pt-5 mt-5"><span>Contact Us</span></h1>
+  const handleSubmit = (e) => {
+    const name = nameRef.current.value;
+    const email = emailRef.current.value;
+    const number = numberRef.current.value;
+    const comment = commentRef.current.value;
 
-<div className="wrapper">
+    const allInfo = { name, email, number, comment };
 
-    <div className="company-info">
-        <h3>The Skay Aural</h3>
+    // send data to server
+    fetch("https://theskyaural.herokuapp.com/send", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(allInfo),
+    }).then((data) => {
+    });
+    e.preventDefault();
+  };
 
-        <ul>
-            <li><i className="fa fa-road"></i> India</li>
-            <li><i className="fa fa-phone"></i> (555) 555-5555</li>
-            <li><i className="fa fa-envelope"></i> test@test.com</li>
-        </ul>
-    </div>
+  return (
+    <div className="mainContactForm  ">
+    <div className="  container">
+      <Slide left>
+        <form onSubmit={handleSubmit}>
+          <div className="contactFm m-auto row">
+            <div className="col-sm-12 col-md-6 col-lg-6">
+              {/* Name */}
+              <input
+                style={{ width: "80%" }}
+                ref={nameRef}
+                className="inputTag mt-4 p-2 ms-5  m-1 border rounded"
+                required
+                placeholder="Your Name"
+                type="text"
+              />
+              <input
+                style={{ width: "80%" }}
+                ref={emailRef}
+                className="inputTag mt-4 p-2  ms-5 m-1 border rounded"
+                required
+                placeholder="Your Email"
+                type="email"
+              />
+              <input
+                style={{ width: "80%" }}
+                ref={numberRef}
+                className="inputTag mt-4 p-2 ms-5  m-1 border rounded"
+                required
+                placeholder="Your Number"
+                type="tel"
+              />
+            </div>
+            <div className="col-sm-12 col-md-6 col-lg-6">
+              <textarea
+                style={{ height: "85%", width: "80%" }}
+                ref={commentRef}
+                className="p-3 ms-5 mt-4 border rounded textArea"
+                required
+                placeholder="Your Message"
+              >
+               
+              </textarea>
+            </div>
 
-    <div className="contact">
-        <h3>E-mail Us</h3>
-
-        <form id="contact-form">
-
-            <p>
-                <label>Name</label>
-                <input type="text" name="name" id="name" required />
-            </p>
-
-            <p>
-                <label>Company</label>
-                <input type="text" name="company" id="company" />
-            </p>
-
-            <p>
-                <label>E-mail Address</label>
-                <input type="email" name="email" id="email" required />
-            </p>
-
-            <p>
-                <label>Phone Number</label>
-                <input type="text" name="phone" id="phone"/>
-            </p>
-
-            <p className="full">
-                <label>Message</label>
-                <textarea name="message" rows="5" id="message"></textarea>
-            </p>
-
-            <p className="full">
-                <button type="submit">Submit</button>
-            </p>
-
+            <input
+              className="rounded submitBtn p-2 border-0 mt-4"
+             
+              type="submit"
+              value="Submit"
+            />
+          </div>
         </form>
+      </Slide>
     </div>
-
-</div>
-</div>
-</Slide>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Contact;

@@ -5,6 +5,10 @@ import Fade from 'react-reveal/Fade';
 import Pulse from 'react-reveal/Pulse';
 
 const Header = () => {
+
+  
+
+
     return (
         <div className='sticky-top'>
             <nav className="navbar navbar-expand-lg ">

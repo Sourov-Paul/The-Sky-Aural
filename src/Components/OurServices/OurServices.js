@@ -1,113 +1,132 @@
-import React from 'react';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
 import './OurServices.css';
 
-
-const OurServices = () => {
+export default class PreviousNextMethods extends Component {
+  constructor(props) {
+    super(props);
+    this.next = this.next.bind(this);
+    this.previous = this.previous.bind(this);
+  }
+  next() {
+    this.slider.slickNext();
+  }
+  previous() {
+    this.slider.slickPrev();
+  }
+  render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 100,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 500,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 280,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    };
     return (
-        <div className='serviceContainer  pt-4'>
-        <div className='mainService container pt-5 mt-5'>
-          <h2 className='text-center'><b>Our Services</b></h2>
-            <div className='row m-auto g-4'>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-                <div className='col-sm-6 col-md-4 col-lg-3'>
-                <div className='m-auto'>
-                <div className="card" style={{width: '18rem',marginTop:'10px'}}>
-  <img src="https://i.ibb.co/6wgn4sL/rsz-1pexels-pixabay-534220.jpg" className="card-img-top" alt="..."/>
-  <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="/" className="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-                </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    );
-};
+      <div >
+      <div className="mainServideStore" >
+        <div className="buttonRightLeft d-flex justify-content-between p-5 pb-0 ">
+         <div className="titleItem">
+         <h2>IN THE SPOTLIGHT</h2>
 
-export default OurServices;
+         </div>
+          <div className="nextIcon">
+          <button className="button leftBtn" onClick={this.previous}>
+            
+            <i className="fa-solid fa-angle-left"></i>
+
+          </button>
+          <button className="button rightBtn" onClick={this.next}>
+          <i className="fa-solid fa-angle-right"></i>
+          </button>
+
+          
+          </div>
+        </div>
+        <Slider ref={c => (this.slider = c)} {...settings}>
+          <div  key={1}>
+<Link to='/check'>
+              <img className=' m-1 img-fluid' src='https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_593,c_limit/a44e33aa-48ae-4da3-b680-660f76999428/jordan-air-200e-older-shoes-BsnlwW.png' alt='product  ' />
+
+</Link>
+          </div>
+          <div  key={2}>
+<Link to='/check'>
+              <img className=' m-1 img-fluid' src='https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_593,c_limit/a44e33aa-48ae-4da3-b680-660f76999428/jordan-air-200e-older-shoes-BsnlwW.png' alt='product  ' />
+
+</Link>
+          </div>
+          <div  key={3}>
+<Link to='/check2'>
+              <img className=' m-1 img-fluid' src='https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_593,c_limit/a44e33aa-48ae-4da3-b680-660f76999428/jordan-air-200e-older-shoes-BsnlwW.png' alt='product  ' />
+
+</Link>
+          </div>
+          <div  key={4}>
+<Link to='/check2'>
+              <img className=' m-1 img-fluid' src='https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_593,c_limit/a44e33aa-48ae-4da3-b680-660f76999428/jordan-air-200e-older-shoes-BsnlwW.png' alt='product  ' />
+
+</Link>
+          </div>
+          <div  key={5}>
+<Link to='/check'>
+              <img className=' m-1 img-fluid' src='https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_593,c_limit/a44e33aa-48ae-4da3-b680-660f76999428/jordan-air-200e-older-shoes-BsnlwW.png' alt='product  ' />
+
+</Link>
+          </div>
+          <div  key={6}>
+<Link to='/check'>
+              <img className=' m-1 img-fluid' src='https://static.nike.com/a/images/q_auto:eco/t_product_v1/f_auto/dpr_1.0/w_593,c_limit/a44e33aa-48ae-4da3-b680-660f76999428/jordan-air-200e-older-shoes-BsnlwW.png' alt='product  ' />
+
+</Link>
+          </div>
+        </Slider>
+       
+      </div>
+      </div>
+    );
+  }
+}
