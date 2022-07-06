@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Check2 = () => {
+const Mobile = () => {
     return (
         <div>
-           check2 
+            mobile
         </div>
     );
 };
 
-export default Check2;
+export default Mobile;

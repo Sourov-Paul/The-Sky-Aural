@@ -3,22 +3,33 @@ import Home from "./Components/Home/Home";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import ScrollToTop from "react-scroll-to-top";
-import Check from "./Components/Check";
-import Check2 from "./Components/Check2";
+import Login from "./Components/Login-Reg/Login/Login";
+import SignUp from "./Components/Login-Reg/SignUp/SignUp";
+import AuthProvider from "./context/AuthProvider/AuthProvider";
+import MobilePost from "./Components/AdminRoute/MobilePost/MobilePost";
+import Mobile from "./Components/Products/Mobile/Mobile";
+import MobileDetails from "./Components/MobileDetails/MobileDetails";
 
 function App() {
   return (
     <>
+    <AuthProvider>
           <ScrollToTop smooth color="#6f00ff" />
 
       <Routes>
 
       <Route path='/' element={<Home/>}/>
       <Route path='home' element={<Home/>}/>
-      <Route path='check' element={<Check/>}/>
-      <Route path='check2' element={<Check2/>}/>
+      <Route path='login' element={<Login/>}/>
+      <Route path='signup' element={<SignUp/>}/>
+      <Route path='mobileProduct' element={<Mobile/>}/>
+      <Route path='/mobileDetails/:id' element={<MobileDetails/>}/>
 
+      {/* admin route */}
+      <Route path='mobilePost' element={<MobilePost/>}/>
       </Routes>
+
+      </AuthProvider>
     </>
   );
 }
