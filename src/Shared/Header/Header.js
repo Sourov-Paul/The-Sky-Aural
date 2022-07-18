@@ -3,14 +3,23 @@ import './Header.css';
 import Rotate from 'react-reveal/Rotate';
 import Fade from 'react-reveal/Fade';
 import Pulse from 'react-reveal/Pulse';
+import UseAuth from '../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
-  
+  const {logOut,user}=UseAuth()
 
 
     return (
-        <div className='sticky-top'>
+       <>
+<div className='d-flex justify-content-end'>
+<button onClick={logOut}>LogOut</button>
+<Link to="/login"><h2>Login</h2></Link>
+<Link to="/signup"><h2>Reg</h2></Link>
+   <h2>{user.email}</h2>    
+  </div> 
+        <div className='sticky-top'>          
             <nav className="navbar navbar-expand-lg ">
   <div className="container-fluid">
   <a className="navbar-brand fs-4 fw-bold text-light" href="/"> <Fade right>SkyAural</Fade></a>
@@ -27,6 +36,7 @@ const Header = () => {
        <Rotate top left> 
 
         <li className="nav-item">
+          
           <a className="nav-link" href="/">About</a>
         </li>
         </Rotate>
@@ -67,6 +77,7 @@ const Header = () => {
   </div>
 </nav>
         </div>
+       </>
     );
 };
 

@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import initializeFirebase from "../Firebase/FirebaseInitialize";
-import {signInWithEmailAndPassword , getAuth,signOut,onAuthStateChanged  , createUserWithEmailAndPassword } from "firebase/auth";
-
-
+import {signInWithEmailAndPassword , getAuth,signOut,onAuthStateChanged  , createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getFirestore} from "firebase/firestore"
+import { getStorage } from "firebase/storage";
 
 
 // Initialize Firebase App
 initializeFirebase()
+export const database=getFirestore(initializeFirebase())
+export const storage=getStorage(initializeFirebase());
+
 
 
 const useFirebase=()=>{
@@ -14,7 +17,8 @@ const useFirebase=()=>{
     const [user, setUser]=useState({})
    const [loading,setLoading]=useState(true)
    const [error,setError]=useState('')
-   
+   const [admin,setAdmin]=useState(false)
+
     const auth = getAuth();
 
     // registationUser handle
@@ -26,6 +30,11 @@ const useFirebase=()=>{
             const newUser = { email, displayName: name };
             setUser(newUser);
             saveUser(email,password,name)
+                  //    send name to firebase after creation
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          
           })
           navigate('/')
           .catch((error) => {
@@ -57,7 +66,7 @@ const useFirebase=()=>{
   // save user database
   const saveUser=((email,password,displayName)=>{
     const user={email,password,displayName};
-    fetch('https://theskyaural.herokuapp.com/users',{
+    fetch('http://localhost:5000/users',{
       method:'POST',
       headers:{
         'content-type':'application/json'
@@ -70,13 +79,21 @@ const useFirebase=()=>{
     })
   })
 
+// admin handle
+useEffect(()=>{
+  
+  fetch(`http://localhost:5000/users/${user.email}`)
+  .then(res=>res.json())
+  .then(data=>setAdmin(data.admin))
+  setLoading(false)
 
+},[user.email])
 
 
 // user state update handle
-    useEffect(()=>{
+      useEffect(()=>{
 
-       const unsubscribe= onAuthStateChanged(auth, (user) => {
+        const unsubscribe= onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
             } else {
@@ -113,11 +130,14 @@ const useFirebase=()=>{
 
 return{
     user,
+    admin,
     registerUser,
     loginUser,
     loading,
     error,
-    logOut
+    logOut,
+    database,
+    storage
 }
 
 

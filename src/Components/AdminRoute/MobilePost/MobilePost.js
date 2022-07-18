@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
 import './MobilePost.css';
+import React, { useRef, useState } from 'react';
 
 
 const MobilePost = () => {
@@ -8,7 +8,7 @@ const MobilePost = () => {
             const [sucess,setSucess]=useState(false)
             // error message
             const [error,setError]=useState('')
-  
+            const[image,setImage]=useState(null)
 
             const nameRef=useRef()
             const titleRef=useRef()
@@ -19,14 +19,13 @@ const MobilePost = () => {
             const color1Ref=useRef()
             const color2Ref=useRef()
             const videoLinkRef=useRef()
-            const img1LinkRef=useRef()
-            const img2LinkRef=useRef()
-            const img3LinkRef=useRef()
-            const img4LinkRef=useRef()
+            
 
           
             const mobileHandle=e=>{
-               
+                if(!image){
+                    return;
+                }
                 const mobileName=nameRef.current.value;
                 const mobileTitle=titleRef.current.value;
                 const mobilePrice1=price1Ref.current.value;
@@ -36,10 +35,7 @@ const MobilePost = () => {
                 const mobileColor1=color1Ref.current.value;
                 const mobileColor2=color2Ref.current.value;
                 const mobileVideoLink=videoLinkRef.current.value;
-                const mobileImg1Link=img1LinkRef.current.value;
-                const mobileImg2Link=img2LinkRef.current.value;
-                const mobileImg3Link=img3LinkRef.current.value;
-                const mobileImg4Link=img4LinkRef.current.value;
+               
 
                     // all data
                     const allMobileData={
@@ -52,16 +48,13 @@ const MobilePost = () => {
                         mobileColor1,
                         mobileColor2,
                         mobileVideoLink,
-                        mobileImg1Link,
-                        mobileImg2Link,
-                        mobileImg3Link,
-                        mobileImg4Link,
+                        image
                     }
-               console.log(allMobileData)
               
               
               
-               fetch('https://theskyaural.herokuapp.com/mobileDetailsPost',{
+            //    fetch('https://theskyaural.herokuapp.com/mobileDetailsPost',{
+               fetch('http://localhost:5000/mobileDetailsPost',{
                         method:'POST',
                         headers:{
                             'content-type':'application/json'
@@ -89,7 +82,7 @@ const MobilePost = () => {
     return (
         <div>
 
-            <form onSubmit={mobileHandle}>
+            <form onSubmit={mobileHandle} enctype="multipart/form-data">
             <input ref={nameRef} type="text" required   name='name' placeholder='Mobile Name'/>
             <br/>
             <input ref={titleRef} type='text' required  name='title' placeholder='Title' />
@@ -108,14 +101,9 @@ const MobilePost = () => {
             <br/>
             <input ref={videoLinkRef} type='text'  name='videoLink' placeholder='Video link' />
             <br/>
-            <input ref={img1LinkRef} required type='url'  name='img1Link' placeholder='Image-link-1' />
-            <br/>
-            <input ref={img2LinkRef} type='url'  name='img2Link' placeholder='Image-link-2' />
-            <br/>
-            <input ref={img3LinkRef} type='url'  name='img3Link' placeholder='Image-link-3' />
-            <br/>
-            <input ref={img4LinkRef} type='url'  name='img4Link' placeholder='Image-link-4' />
-            <br/>
+            <input type="file" name="avatar"multiple accept="image/*" 
+            onChange={e=>setImage(e.target.files[0])}
+            />
            
         <input type='submit'  value='Submit'/>
             </form>

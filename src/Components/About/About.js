@@ -4,7 +4,9 @@ import Bounce from 'react-reveal/Bounce';
 
 
 const About = () => {
+
     return (
+        <>
         <div className='about'>
          <div className='mainAbout container p-5'>
             <div className='row d-flex align-items-center justify-content-between'>
@@ -26,6 +28,7 @@ const About = () => {
             </div>
         </div>
        </div>
+        </>
     );
 };
 

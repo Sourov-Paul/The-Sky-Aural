@@ -1,43 +1,36 @@
 import React from 'react';
-import Header from '../../Shared/Header/Header';
 import About from '../About/About';
 import Banner from '../Banner/Banner';
 import Contact from '../Contact/Contact';
 import Responsive from '../TopProducts/TopProducts';
 import Footer from '../../Shared/Footer/Footer';
-import './Home.css';
-import { Link } from 'react-router-dom';
-import UseAuth from '../../Hooks/useAuth';
 import OurServices from '../OurServices/OurServices';
+import ScrollToTop from 'react-scroll-to-top';
+import MainHeader from '../MainHeader/MainHeader';
+import Header from '../../Shared/Header/Header';
+import './Home.css';
 
 
 
 
 const Home = () => {
-
-  const {user ,logOut}=UseAuth()
  
     return (
         <>
-        <button onClick={logOut}>Logout</button>
-           <div  className='loginContainer'>
-        <h1 className='text-center'>{user?.email}</h1>
-        <div className='var1'> </div>
+                 <ScrollToTop smooth color="#6f00ff" />
 
-          <div className="d-flex flex-row-reverse">
-  <div className="p-2">
-    <Link to='/signup'>Sign In</Link>
-  </div>
-  <div className="p-2">
-    <Link to='/login'>Login</Link>
-    
-    </div>
-  <div className="p-2">Help</div>
-</div>
-          </div>
-      
+ 
+            <div className='headerde'> 
+            {/* <MainHeader/> */}
+             </div>
+            <div className='header2f'>
+            </div>
             <Header/>
+
+
+
             <Banner/>
+         
             <About/>
             <Responsive/>
             <br/>

@@ -17,7 +17,7 @@ const Contact = () => {
     const allInfo = { name, email, number, comment };
 
     // send data to server
-    fetch("https://theskyaural.herokuapp.com/send", {
+    fetch("http://localhost:5000/send", {
       method: "POST",
       headers: {
         "content-type": "application/json",
