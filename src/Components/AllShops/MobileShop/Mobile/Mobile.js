@@ -23,7 +23,6 @@ console.log(props.product)
 
 
 
-
     return (
         <div>
  <div className="wrapper">
@@ -73,6 +72,7 @@ console.log(props.product)
                   <button onClick={()=>props.handleAddToCart(props.product)}>ADD TO CART</button>
                 </div>
               </div>
+              <button onClick={()=>props.handleDeleteMobile(props.product._id)}>Delete</button>
             </div>
           </section>
         </div>

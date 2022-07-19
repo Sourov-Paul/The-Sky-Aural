@@ -30,13 +30,13 @@ const Banner = () => {
   </div>
   <div className="carousel-inner">
     <div className="carousel-item active">
-      {/* <img src="https://image.shutterstock.com/image-photo/flat-lay-workspace-desk-stationery-260nw-1478678966.jpg" className="d-block w-100" alt="..."/> */}
+      <img style={{height:"90vh",width:"100vh"}} src="https://i.ibb.co/W3D7kxC/towfiqu-barbhuiya-5x-TYgw2g7aw-unsplash.jpg" className="d-block w-100" alt="..."/>
     </div>
     <div className="carousel-item">
-      {/* <img src="https://source.unsplash.com/1528x600/?headphone,iphone" className="d-block w-100" alt="..."/> */}
+      <img style={{height:"90vh",width:"100vh"}} src="https://i.ibb.co/51CtMtB/rahul-chakraborty-xs-Gxht-Asf-SA-unsplash.jpg" className="d-block w-100" alt="..."/>
     </div>
     <div className="carousel-item">
-      {/* <img src="https://source.unsplash.com/1528x600/?iphone,headphone" className="d-block w-100" alt="..."/> */}
+      <img style={{height:"90vh",width:"100vh"}} src="https://i.ibb.co/RbJP6WR/jess-bailey-UHqf-UTDmd-C4-unsplash.jpg" className="d-block w-100" alt="..."/>
     </div>
   </div>
   <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

@@ -1,14 +1,10 @@
 import { useEffect, useState } from "react";
 import initializeFirebase from "../Firebase/FirebaseInitialize";
 import {signInWithEmailAndPassword , getAuth,signOut,onAuthStateChanged  , createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { getFirestore} from "firebase/firestore"
-import { getStorage } from "firebase/storage";
 
 
 // Initialize Firebase App
 initializeFirebase()
-export const database=getFirestore(initializeFirebase())
-export const storage=getStorage(initializeFirebase());
 
 
 
@@ -85,7 +81,6 @@ useEffect(()=>{
   fetch(`http://localhost:5000/users/${user.email}`)
   .then(res=>res.json())
   .then(data=>setAdmin(data.admin))
-  setLoading(false)
 
 },[user.email])
 
@@ -135,9 +130,8 @@ return{
     loginUser,
     loading,
     error,
-    logOut,
-    database,
-    storage
+    logOut
+    
 }
 
 

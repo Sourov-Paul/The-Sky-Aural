@@ -31,7 +31,16 @@ for(const product of cart){
 }
 
 
+// handle delete mobile
+const handleDeleteMobile=id=>{
+    console.log('delete clicked',id)
 
+    const url=`http://localhost:5000/mobileDetailsPost/${id}`
+    fetch(url,{
+        method:'DELETE'
+    })
+    .then()
+}
 
     return (
         <div>
@@ -45,6 +54,7 @@ for(const product of cart){
         allMobileShop?.map((product)=>(<div >
         <div className='col-sm-6 col-md-4 col-lg-3'>
         <Mobile
+        handleDeleteMobile={handleDeleteMobile}
          key={product._id}
           product={product}
           handleAddToCart={handleAddToCart}
